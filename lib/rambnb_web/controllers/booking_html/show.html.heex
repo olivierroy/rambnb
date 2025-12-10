@@ -1,0 +1,111 @@
+<div class="bg-white min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
+        <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-2">Reservation Confirmed!</h1>
+      <p class="text-lg text-gray-600">Your RAM is waiting for you.</p>
+    </div>
+
+    <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg mb-6">
+      <div class="p-8">
+        <div class="flex items-start gap-6 mb-8 pb-8 border-b border-gray-200">
+          <img
+            src={@booking.listing.image_url}
+            alt={@booking.listing.title}
+            class="w-32 h-32 rounded-xl object-cover"
+          />
+          <div class="flex-1">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">
+              <%= @booking.listing.title %>
+            </h2>
+            <p class="text-gray-600 mb-2">
+              <%= @booking.listing.capacity %>GB <%= @booking.listing.memory_type %> • <%= @booking.listing.speed %>
+            </p>
+            <p class="text-gray-500">
+              <%= @booking.listing.location %>
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-sm font-medium text-gray-500 mb-2">Check-in</h3>
+            <p class="text-2xl font-bold text-gray-900">
+              <%= Calendar.strftime(@booking.start_date, "%b %d, %Y") %>
+            </p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h3 class="text-sm font-medium text-gray-500 mb-2">Check-out</h3>
+            <p class="text-2xl font-bold text-gray-900">
+              <%= Calendar.strftime(@booking.end_date, "%b %d, %Y") %>
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-4 mb-8">
+          <div class="flex items-center justify-between py-3 border-b border-gray-100">
+            <span class="text-gray-700">Guest Name</span>
+            <span class="font-semibold text-gray-900"><%= @booking.guest_name %></span>
+          </div>
+          <div class="flex items-center justify-between py-3 border-b border-gray-100">
+            <span class="text-gray-700">Email</span>
+            <span class="font-semibold text-gray-900"><%= @booking.guest_email %></span>
+          </div>
+          <div class="flex items-center justify-between py-3 border-b border-gray-100">
+            <span class="text-gray-700">Usage Type</span>
+            <span class="font-semibold text-gray-900"><%= @booking.usage_type %></span>
+          </div>
+          <div class="flex items-center justify-between py-3 border-b border-gray-100">
+            <span class="text-gray-700">Status</span>
+            <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+              <%= String.capitalize(@booking.status) %>
+            </span>
+          </div>
+        </div>
+
+        <div class="bg-rose-50 rounded-lg p-6">
+          <div class="flex items-center justify-between">
+            <span class="text-lg font-medium text-gray-900">Total Price</span>
+            <span class="text-3xl font-bold text-rose-600">$<%= @booking.total_price %></span>
+          </div>
+          <p class="text-sm text-gray-600 mt-2">
+            <%= Date.diff(@booking.end_date, @booking.start_date) %> days
+            at $<%= @booking.listing.price_per_day %> per day
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-6">
+      <div class="flex items-start gap-3">
+        <svg class="w-6 h-6 text-blue-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <div>
+          <h3 class="font-semibold text-blue-900 mb-1">What's next?</h3>
+          <p class="text-blue-800 text-sm">
+            We've sent a confirmation email to <span class="font-medium"><%= @booking.guest_email %></span>.
+            Our RAM delivery specialist will contact you shortly to arrange the transfer.
+            Please ensure your motherboard is ready to receive.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex gap-4 justify-center">
+      <.link navigate={~p"/listings"} class="inline-flex items-center px-6 py-3 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+        Browse More RAM
+      </.link>
+      <button
+        onclick="window.print()"
+        class="inline-flex items-center px-6 py-3 border border-transparent rounded-lg text-sm font-medium text-white bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600"
+      >
+        Print Confirmation
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:title]} type="text" label="Title" />
+  <.input field={f[:memory_type]} type="text" label="Memory type" />
+  <.input field={f[:capacity]} type="number" label="Capacity" />
+  <.input field={f[:speed]} type="text" label="Speed" />
+  <.input field={f[:brand]} type="text" label="Brand" />
+  <.input field={f[:price_per_day]} type="number" label="Price per day" step="any" />
+  <.input field={f[:location]} type="text" label="Location" />
+  <.input field={f[:description]} type="text" label="Description" />
+  <.input field={f[:image_url]} type="text" label="Image url" />
+  <.input field={f[:available]} type="checkbox" label="Available" />
+  <:actions>
+    <.button>Save Listing</.button>
+  </:actions>
+</.simple_form>

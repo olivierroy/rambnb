@@ -1,0 +1,15 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:start_date]} type="date" label="Start date" />
+  <.input field={f[:end_date]} type="date" label="End date" />
+  <.input field={f[:usage_type]} type="text" label="Usage type" />
+  <.input field={f[:guest_name]} type="text" label="Guest name" />
+  <.input field={f[:guest_email]} type="text" label="Guest email" />
+  <.input field={f[:total_price]} type="number" label="Total price" step="any" />
+  <.input field={f[:status]} type="text" label="Status" />
+  <:actions>
+    <.button>Save Booking</.button>
+  </:actions>
+</.simple_form>

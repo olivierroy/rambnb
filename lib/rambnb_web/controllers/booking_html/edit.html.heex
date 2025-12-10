@@ -1,0 +1,8 @@
+<.header>
+  Edit Booking {@booking.id}
+  <:subtitle>Use this form to manage booking records in your database.</:subtitle>
+</.header>
+
+<.booking_form changeset={@changeset} action={~p"/bookings/#{@booking}"} />
+
+<.back navigate={~p"/bookings"}>Back to bookings</.back>
