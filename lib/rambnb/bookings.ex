@@ -28,16 +28,16 @@ defmodule Rambnb.Bookings do
 
   ## Examples
 
-      iex> get_booking!(123)
+      iex> get_booking!("6d9b4f8e-1234-5678-9abc-def123456789")
       %Booking{}
 
-      iex> get_booking!(456)
+      iex> get_booking!("non-existent")
       ** (Ecto.NoResultsError)
 
   """
-  def get_booking!(id) do
+  def get_booking!(public_id) do
     Booking
-    |> Repo.get!(id)
+    |> Repo.get_by!(public_id: public_id)
     |> Repo.preload(:listing)
   end
 

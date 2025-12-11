@@ -4,10 +4,14 @@ defmodule Rambnb.BookingsFixtures do
   entities via the `Rambnb.Bookings` context.
   """
 
+  alias Rambnb.CatalogFixtures
+
   @doc """
   Generate a booking.
   """
   def booking_fixture(attrs \\ %{}) do
+    listing = Map.get(attrs, :listing) || CatalogFixtures.listing_fixture()
+
     {:ok, booking} =
       attrs
       |> Enum.into(%{
@@ -17,8 +21,10 @@ defmodule Rambnb.BookingsFixtures do
         start_date: ~D[2025-12-09],
         status: "some status",
         total_price: "120.5",
-        usage_type: "some usage_type"
+        usage_type: "some usage_type",
+        listing_id: listing.id
       })
+      |> Map.delete(:listing)
       |> Rambnb.Bookings.create_booking()
 
     booking

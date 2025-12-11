@@ -1,3 +1,4 @@
+<% listing = @booking.listing %>
 <div class="bg-white min-h-screen">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="text-center mb-8">
@@ -12,24 +13,30 @@
 
     <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg mb-6">
       <div class="p-8">
-        <div class="flex items-start gap-6 mb-8 pb-8 border-b border-gray-200">
-          <img
-            src={@booking.listing.image_url}
-            alt={@booking.listing.title}
-            class="w-32 h-32 rounded-xl object-cover"
-          />
-          <div class="flex-1">
-            <h2 class="text-2xl font-bold text-gray-900 mb-2">
-              <%= @booking.listing.title %>
-            </h2>
-            <p class="text-gray-600 mb-2">
-              <%= @booking.listing.capacity %>GB <%= @booking.listing.memory_type %> • <%= @booking.listing.speed %>
-            </p>
-            <p class="text-gray-500">
-              <%= @booking.listing.location %>
-            </p>
+        <%= if listing do %>
+          <div class="flex items-start gap-6 mb-8 pb-8 border-b border-gray-200">
+            <img
+              src={listing.image_url}
+              alt={listing.title}
+              class="w-32 h-32 rounded-xl object-cover"
+            />
+            <div class="flex-1">
+              <h2 class="text-2xl font-bold text-gray-900 mb-2">
+                <%= listing.title %>
+              </h2>
+              <p class="text-gray-600 mb-2">
+                <%= listing.capacity %>GB <%= listing.memory_type %> • <%= listing.speed %>
+              </p>
+              <p class="text-gray-500">
+                <%= listing.location %>
+              </p>
+            </div>
           </div>
-        </div>
+        <% else %>
+          <div class="mb-8 rounded-lg border border-yellow-200 bg-yellow-50 p-4 text-yellow-900">
+            Listing information is no longer available for this reservation.
+          </div>
+        <% end %>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div class="bg-gray-50 rounded-lg p-6">
@@ -74,7 +81,11 @@
           </div>
           <p class="text-sm text-gray-600 mt-2">
             <%= Date.diff(@booking.end_date, @booking.start_date) %> days
-            at $<%= @booking.listing.price_per_day %> per day
+            <%= if listing do %>
+              at $<%= listing.price_per_day %> per day
+            <% else %>
+              (original listing unavailable)
+            <% end %>
           </p>
         </div>
       </div>

@@ -16,6 +16,17 @@ alias Rambnb.Catalog.Listing
 # Clear existing listings
 Repo.delete_all(Listing)
 
+ram_images = [
+  "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800",
+  "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800",
+  "https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=800",
+  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800",
+  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800",
+  "https://images.unsplash.com/photo-1624823183493-ed5832f48f18?w=800",
+  "https://images.unsplash.com/photo-1517433456452-f9633a875f6f?w=800",
+  "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800"
+]
+
 # Seed RAM listings
 Repo.insert!(%Listing{
   title: "Cozy 8GB DDR4 Stick - Perfect for Chrome Tabs",
@@ -78,7 +89,7 @@ Repo.insert!(%Listing{
   price_per_day: Decimal.new("79.99"),
   location: "Seattle, WA",
   description: "Adorable 2x8GB kit certified by the Electron Foundation for running Slack, VS Code, and Spotify simultaneously. Comes with a fascinating history - was once used to compile Chromium from source. RGB-free for the minimalists. Perfect for developers who somehow need 16GB just to write JavaScript.",
-  image_url: "https://images.unsplash.com/photo-1598518142095-6f1f9c5e1b51?w=800",
+  image_url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
   available: true
 })
 
@@ -91,7 +102,7 @@ Repo.insert!(%Listing{
   price_per_day: Decimal.new("499.99"),
   location: "New York, NY",
   description: "Palatial 4x32GB DDR5 setup for the discerning professional. Can run literally everything. Chrome with 100 tabs? Check. 15 Electron apps? Easy. Minecraft with ALL the mods? Done. Your company's enterprise Java application? Still has RAM to spare. ECC supported but therapy not included.",
-  image_url: "https://images.unsplash.com/photo-1618472607738-888e17998479?w=800",
+  image_url: "https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=800",
   available: true
 })
 
@@ -104,7 +115,7 @@ Repo.insert!(%Listing{
   price_per_day: Decimal.new("29.99"),
   location: "Portland, OR",
   description: "Cute little DDR3 kit perfect for working from home, as long as your work involves exactly one application at a time. Zoom OR Excel, not both. Browser tabs limited to 5. Includes free performance anxiety when Windows Update starts. Great conversation starter about 'the good old days' of computing.",
-  image_url: "https://images.unsplash.com/photo-1602143407920-b70a8b6f0b3c?w=800",
+  image_url: "https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?w=800",
   available: true
 })
 
@@ -117,7 +128,7 @@ Repo.insert!(%Listing{
   price_per_day: Decimal.new("179.99"),
   location: "Denver, CO",
   description: "Recently renovated 2x24GB setup with excellent price-to-performance ratio. Not too much, not too little - the Goldilocks of RAM. Perfect for gaming, programming, and running all your chat apps simultaneously. Can handle your 'quick' IntelliJ startup time. Pet-friendly (supports virtual machines).",
-  image_url: "https://images.unsplash.com/photo-1628557044552-f31d5ec16b9e?w=800",
+  image_url: "https://images.unsplash.com/photo-1478358161113-b0e11994a36b?w=800",
   available: true
 })
 
@@ -130,7 +141,7 @@ Repo.insert!(%Listing{
   price_per_day: Decimal.new("379.99"),
   location: "San Francisco, CA",
   description: "Magnificent 2x48GB DDR5 setup with breathtaking speed. Render 8K video while gaming while hosting a Minecraft server. Your Docker containers finally have a home. Blender simulations complete before your coffee gets cold. Warning: May cause unrealistic expectations about computer performance.",
-  image_url: "https://images.unsplash.com/photo-1587202372634-32a44d93f585?w=800",
+  image_url: "https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=800",
   available: true
 })
 
@@ -208,7 +219,7 @@ Repo.insert!(%Listing{
   price_per_day: Decimal.new("299.99"),
   location: "Boston, MA",
   description: "Serious 4x20GB DDR4 kit for serious work. CAD? Check. Multiple VMs? Check. That massive Excel file that brings lesser machines to their knees? Finally defeated. Perfect for professionals who are tired of watching spinning wheels. No RGB to distract from productivity.",
-  image_url: "https://images.unsplash.com/photo-1618472607738-888e17998479?w=800",
+  image_url: "https://images.unsplash.com/photo-1503602642458-232111445657?w=800",
   available: true
 })
 
@@ -221,7 +232,7 @@ Repo.insert!(%Listing{
   price_per_day: Decimal.new("119.99"),
   location: "Nashville, TN",
   description: "Modern 2x12GB DDR5 setup hitting the sweet spot. Enough for modern gaming, enough for development work, enough for your questionable number of browser tabs. Not too much, not too little. The sensible choice your wallet will appreciate. Still has that new RAM smell.",
-  image_url: "https://images.unsplash.com/photo-1628557044552-f31d5ec16b9e?w=800",
+  image_url: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800",
   available: true
 })
 
@@ -234,7 +245,7 @@ Repo.insert!(%Listing{
   price_per_day: Decimal.new("1999.99"),
   location: "Cupertino, CA",
   description: "This is what happens when money is no object. 16x32GB DDR5 configuration that could probably achieve sentience. Run the entire internet locally. Host every VM. Keep Task Manager open just to admire the number. Requires industrial cooling and a second mortgage. Therapist recommended.",
-  image_url: "https://images.unsplash.com/photo-1587202372634-32a44d93f585?w=800",
+  image_url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800",
   available: true
 })
 
@@ -260,8 +271,204 @@ Repo.insert!(%Listing{
   price_per_day: Decimal.new("4.99"),
   location: "Pittsburgh, PA",
   description: "Ancient DDR1 artifact from the early 2000s. More of a museum piece than functional RAM. Perfect for retro builds, nostalgia trips, or showing kids how good they have it. Can run Windows XP like a champion. Modern websites will make it cry. Comes with stories of the old days.",
-  image_url: "https://images.unsplash.com/photo-1602143407920-b70a8b6f0b3c?w=800",
+  image_url: Enum.at(ram_images, 2),
   available: true
+})
+
+# New listings
+Repo.insert!(%Listing{
+  title: "Sleek 20GB DDR4 Hybrid - The Unconventional Choice",
+  memory_type: "DDR4",
+  capacity: 20,
+  speed: "3200 MHz",
+  brand: "Corsair",
+  price_per_day: Decimal.new("89.99"),
+  location: "Chicago, IL",
+  description: "Unique 16GB + 4GB configuration that defies convention. Not quite 16GB, more than 24GB would be. Perfect for those who like living on the edge of dual-channel optimization. Runs games at high settings while your second monitor displays spreadsheets. The RAM equivalent of ordering a medium drink.",
+  image_url: Enum.at(ram_images, 3),
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Pristine 32GB DDR4 Paradise - Balanced Excellence",
+  memory_type: "DDR4",
+  capacity: 32,
+  speed: "3600 MHz",
+  brand: "G.Skill",
+  price_per_day: Decimal.new("129.99"),
+  location: "San Diego, CA",
+  description: "Perfect 2x16GB DDR4 configuration that just works. Not too flashy, not too boring. RGB lighting that you can actually turn off. Ideal for those who want performance without the premium DDR5 tax. Can multitask like a boss. Comes with our 'It Just Works™' guarantee.",
+  image_url: Enum.at(ram_images, 4),
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Magnificent 384GB DDR5 Palace - Enterprise Elite",
+  memory_type: "DDR5",
+  capacity: 384,
+  speed: "5600 MHz",
+  brand: "Samsung",
+  price_per_day: Decimal.new("1499.99"),
+  location: "Seattle, WA",
+  description: "When 256GB just isn't enough. 12x32GB DDR5 configuration for the truly ambitious. Run your own private cloud. Host databases for fun. Make your friends jealous. Your computer will finally stop saying 'Not Enough Memory'. Server-grade performance without the server-grade noise.",
+  image_url: Enum.at(ram_images, 5),
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Retro 3GB DDR2 Hideaway - Nostalgia Special",
+  memory_type: "DDR2",
+  capacity: 3,
+  speed: "667 MHz",
+  brand: "Kingston",
+  price_per_day: Decimal.new("14.99"),
+  location: "Philadelphia, PA",
+  description: "Take a trip down memory lane with this authentic DDR2 setup. Perfect for that old laptop you can't bear to throw away. Runs Windows Vista like it's 2007 again. Great for playing Minesweeper and Solitaire. May struggle with modern Twitter. Character-building guaranteed.",
+  image_url: Enum.at(ram_images, 6),
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Stunning 72GB DDR4 Sanctuary - Professional Power",
+  memory_type: "DDR4",
+  capacity: 72,
+  speed: "3200 MHz",
+  brand: "Crucial",
+  price_per_day: Decimal.new("279.99"),
+  location: "Atlanta, GA",
+  description: "Serious 4x18GB configuration for serious professionals. Video editors, 3D artists, and data scientists rejoice! Large enough for real work, not so large your wallet cries. Handles multiple Adobe apps simultaneously without breaking a sweat. The sweet spot between enthusiast and enterprise.",
+  image_url: Enum.at(ram_images, 7),
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Legendary 1TB DDR5 Fortress - The Final Boss",
+  memory_type: "DDR5",
+  capacity: 1024,
+  speed: "5200 MHz",
+  brand: "Kingston",
+  price_per_day: Decimal.new("3999.99"),
+  location: "San Francisco, CA",
+  description: "Yes, you read that right. 1 TERABYTE of RAM. 32x32GB DDR5 monstrosity that shouldn't exist but does. Load entire operating systems into RAM disk. Run Minecraft server, GTA V server, and everything else simultaneously. Your power bill will need its own mortgage. Requires liquid nitrogen cooling and questionable life choices.",
+  image_url: Enum.at(ram_images, 0),
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Scenic 24GB LPDDR5 Capsule - Remote Work Ready",
+  memory_type: "LPDDR5",
+  capacity: 24,
+  speed: "6400 MHz",
+  brand: "Micron",
+  price_per_day: Decimal.new("129.99"),
+  location: "Santa Fe, NM",
+  description: "Featherweight LPDDR5 kit tuned for travel ultrabooks. Runs whisper-quiet, barely sips power, and still handles Figma, Zoom, and all-day Spotify sessions. Comes pre-configured for focus sprints and includes a loaner USB-C dock.",
+  image_url: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Industrial 80GB DDR5 Studio - Post Production Hub",
+  memory_type: "DDR5",
+  capacity: 80,
+  speed: "6000 MHz",
+  brand: "TeamGroup",
+  price_per_day: Decimal.new("319.99"),
+  location: "Brooklyn, NY",
+  description: "Purpose-built quad channel kit for editors who keep After Effects, DaVinci, and a dozen proxies open at once. Rigorously burn-in tested so render queues can run overnight without drama.",
+  image_url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800",
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Vintage 12GB DDR3 Capsule - Maker's Nook",
+  memory_type: "DDR3",
+  capacity: 12,
+  speed: "1600 MHz",
+  brand: "Patriot",
+  price_per_day: Decimal.new("39.99"),
+  location: "Boulder, CO",
+  description: "Charming 8GB + 4GB triple-channel throwback for hobby builds, retro LAN parties, or flashing firmware on that stack of routers. Includes complimentary anti-static wrist strap.",
+  image_url: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=800",
+  available: false
+})
+
+Repo.insert!(%Listing{
+  title: "Overclocked 48GB DDR5 Lounge - Benchmark Bay",
+  memory_type: "DDR5",
+  capacity: 48,
+  speed: "6800 MHz",
+  brand: "ADATA",
+  price_per_day: Decimal.new("219.99"),
+  location: "Las Vegas, NV",
+  description: "Hand-binned sticks mounted with active cooling for leaderboard chasers. Pushes extreme XMP profiles while keeping RGB accents tasteful. LN2 pot not included but highly encouraged.",
+  image_url: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800",
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Quiet 64GB DDR4 Library - Focused Flex Space",
+  memory_type: "DDR4",
+  capacity: 64,
+  speed: "3600 MHz",
+  brand: "HyperX",
+  price_per_day: Decimal.new("189.99"),
+  location: "Madison, WI",
+  description: "Low-profile DDR4 kit with zero lighting and tuned timings for deep work. Perfect for research sprints, data exploration, and serious note-taking without disco vibes.",
+  image_url: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800",
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Eco 48GB DDR4 Camper - Solar Powered Bandwidth",
+  memory_type: "DDR4",
+  capacity: 48,
+  speed: "3000 MHz",
+  brand: "Patriot",
+  price_per_day: Decimal.new("109.99"),
+  location: "Bend, OR",
+  description: "Ultra-efficient 2x24GB kit mounted in a fanless shell with solar-ready power delivery. Designed for off-grid coders who want silent builds while camping in the Cascades.",
+  image_url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800",
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Nomadic 64GB LPDDR5X Pod - Remote Studio",
+  memory_type: "LPDDR5X",
+  capacity: 64,
+  speed: "7500 MHz",
+  brand: "Samsung",
+  price_per_day: Decimal.new("199.99"),
+  location: "Lisbon, Portugal",
+  description: "Travel-friendly low-power module tuned for ultrabooks. Comes pre-configured with a virtual coworking pass, VPN, and focus music playlist. Runs cool even on rooftop terraces.",
+  image_url: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=800",
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Titan 768GB DDR5 Bunker - AI Playground",
+  memory_type: "DDR5",
+  capacity: 768,
+  speed: "5200 MHz",
+  brand: "Micron",
+  price_per_day: Decimal.new("1299.99"),
+  location: "Zurich, Switzerland",
+  description: "12-channel monster built for ML researchers. Includes Kubernetes templates, liquid cooling, and an on-call SRE. Enough memory to fit entire language models with room for logs.",
+  image_url: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800",
+  available: true
+})
+
+Repo.insert!(%Listing{
+  title: "Cozy 16GB DDR4 Tiny House - Study Buddy",
+  memory_type: "DDR4",
+  capacity: 16,
+  speed: "3200 MHz",
+  brand: "PNY",
+  price_per_day: Decimal.new("44.99"),
+  location: "Ann Arbor, MI",
+  description: "Adorable low-profile sticks with built-in timers to remind you to hydrate between study sessions. Perfect for students cramming render-heavy projects the night before critique.",
+  image_url: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800",
+  available: false
 })
 
 IO.puts("Seeded #{Repo.aggregate(Listing, :count, :id)} RAM listings!")
