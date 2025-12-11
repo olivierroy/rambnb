@@ -60,6 +60,18 @@ defmodule Rambnb.Catalog do
   def get_listing!(id), do: Repo.get!(Listing, id)
 
   @doc """
+  Returns the top listings for the homepage.
+  """
+  def get_top_listings(limit \\ 6) do
+    from(l in Listing,
+      where: l.available == true,
+      order_by: [desc: l.capacity, desc: l.price_per_day],
+      limit: ^limit
+    )
+    |> Repo.all()
+  end
+
+  @doc """
   Creates a listing.
 
   ## Examples

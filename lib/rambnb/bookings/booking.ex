@@ -10,7 +10,8 @@ defmodule Rambnb.Bookings.Booking do
     field :status, :string
     field :total_price, :decimal
     field :usage_type, :string
-    field :listing_id, :id
+
+    belongs_to :listing, Rambnb.Catalog.Listing
 
     timestamps(type: :utc_datetime)
   end

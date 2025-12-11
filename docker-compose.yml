@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-rambnb}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rambnb}
+      POSTGRES_DB: ${POSTGRES_DB:-rambnb}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rambnb -d rambnb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${PORT:-4000}:4000"
+    environment:
+      # Phoenix configuration
+      PHX_SERVER: "true"
+      PHX_HOST: ${PHX_HOST:-localhost}
+      PORT: "4000"
+
+      # Database configuration
+      DATABASE_URL: postgresql://${POSTGRES_USER:-rambnb}:${POSTGRES_PASSWORD:-rambnb}@db:5432/${POSTGRES_DB:-rambnb}
+      POOL_SIZE: ${POOL_SIZE:-10}
+
+      # Secret configuration - CHANGE THESE IN PRODUCTION!
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+
+      # Optional configurations
+      DNS_CLUSTER_QUERY: ${DNS_CLUSTER_QUERY:-}
+      ECTO_IPV6: ${ECTO_IPV6:-false}
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "/app/bin/rambnb eval 'Rambnb.Release.migrate' && /app/bin/rambnb eval 'Rambnb.Release.seed' && /app/bin/server"
+
+volumes:
+  postgres_data:

@@ -17,7 +17,12 @@ defmodule RambnbWeb.Router do
   scope "/", RambnbWeb do
     pipe_through :browser
 
-    get "/", ListingController, :index
+    get "/", PageController, :home
+    get "/about", PageController, :about
+    get "/terms", PageController, :terms
+    get "/privacy", PageController, :privacy
+    get "/disclaimer", PageController, :disclaimer
+
     resources "/listings", ListingController
     resources "/bookings", BookingController
   end
