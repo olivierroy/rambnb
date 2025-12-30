@@ -13,9 +13,6 @@
 alias Rambnb.Repo
 alias Rambnb.Catalog.Listing
 
-# Clear existing listings
-Repo.delete_all(Listing)
-
 ram_images = [
   "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800",
   "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800",
@@ -27,138 +24,153 @@ ram_images = [
   "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800"
 ]
 
-# Seed RAM listings
-Repo.insert!(%Listing{
-  title: "Cozy 8GB DDR4 Stick - Perfect for Chrome Tabs",
-  memory_type: "DDR4",
-  capacity: 8,
-  speed: "3200 MHz",
-  brand: "Corsair",
-  price_per_day: Decimal.new("49.99"),
-  location: "Silicon Valley, CA",
-  description: "Charming 8GB DDR4 memory stick with stunning RGB lighting. Recently upgraded, can handle up to 12 Chrome tabs simultaneously! Perfect for casual browsing and pretending to work. Host provides complementary thermal paste. No smoking, no mining.",
-  image_url: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800",
-  available: true
-})
+insert_listing = fn attrs ->
+  listing =
+    case attrs do
+      %Listing{} -> attrs
+      %{} -> struct(Listing, attrs)
+    end
 
-Repo.insert!(%Listing{
-  title: "Luxurious 32GB DDR5 Beast - Gaming Paradise",
-  memory_type: "DDR5",
-  capacity: 32,
-  speed: "6000 MHz",
-  brand: "G.Skill",
-  price_per_day: Decimal.new("149.99"),
-  location: "Austin, TX",
-  description: "Absolutely gorgeous DDR5 memory with panoramic RGB views. This beauty can handle Cyberpunk 2077 AND Discord at the same time. Recently refurbished, minimal thermal throttling. Perfect for gaming, streaming, or running that one Electron app that somehow needs 8GB. Superhost status!",
-  image_url: "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800",
-  available: true
-})
+  Repo.get_by(Listing, title: listing.title) || Repo.insert!(listing)
+end
 
-Repo.insert!(%Listing{
-  title: "Budget-Friendly 4GB DDR3 Stick - Vintage Charm",
-  memory_type: "DDR3",
-  capacity: 4,
-  speed: "1600 MHz",
-  brand: "Kingston",
-  price_per_day: Decimal.new("19.99"),
-  location: "Detroit, MI",
-  description: "Rustic DDR3 with lots of character! Been around the block a few times but still kicking. Great for running Windows XP in a VM or that one legacy app your company refuses to update. No RGB, no frills, just honest memory. Can handle Notepad and Calculator at the same time.",
-  image_url: "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800",
-  available: true
-})
+# Seed RAM listings only if they are missing.
+listings = [
+  %{
+    title: "Cozy 8GB DDR4 Stick - Perfect for Chrome Tabs",
+    memory_type: "DDR4",
+    capacity: 8,
+    speed: "3200 MHz",
+    brand: "Corsair",
+    price_per_day: Decimal.new("49.99"),
+    location: "Silicon Valley, CA",
+    description:
+      "Charming 8GB DDR4 memory stick with stunning RGB lighting. Recently upgraded, can handle up to 12 Chrome tabs simultaneously! Perfect for casual browsing and pretending to work. Host provides complementary thermal paste. No smoking, no mining.",
+    image_url: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800",
+    available: true
+  },
+  %{
+    title: "Luxurious 32GB DDR5 Beast - Gaming Paradise",
+    memory_type: "DDR5",
+    capacity: 32,
+    speed: "6000 MHz",
+    brand: "G.Skill",
+    price_per_day: Decimal.new("149.99"),
+    location: "Austin, TX",
+    description:
+      "Absolutely gorgeous DDR5 memory with panoramic RGB views. This beauty can handle Cyberpunk 2077 AND Discord at the same time. Recently refurbished, minimal thermal throttling. Perfect for gaming, streaming, or running that one Electron app that somehow needs 8GB. Superhost status!",
+    image_url: "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800",
+    available: true
+  },
+  %{
+    title: "Budget-Friendly 4GB DDR3 Stick - Vintage Charm",
+    memory_type: "DDR3",
+    capacity: 4,
+    speed: "1600 MHz",
+    brand: "Kingston",
+    price_per_day: Decimal.new("19.99"),
+    location: "Detroit, MI",
+    description:
+      "Rustic DDR3 with lots of character! Been around the block a few times but still kicking. Great for running Windows XP in a VM or that one legacy app your company refuses to update. No RGB, no frills, just honest memory. Can handle Notepad and Calculator at the same time.",
+    image_url: "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800",
+    available: true
+  },
+  %{
+    title: "Premium 64GB DDR5 Suite - Content Creator's Dream",
+    memory_type: "DDR5",
+    capacity: 64,
+    speed: "6400 MHz",
+    brand: "Corsair",
+    price_per_day: Decimal.new("249.99"),
+    location: "Los Angeles, CA",
+    description:
+      "Stunning DDR5 kit with unobstructed bandwidth views. Perfect for rendering those 4K videos or running 50 Docker containers you forgot about. Can handle Adobe Creative Cloud without crying. Features include: low-profile heatsink, works great with air cooling, and yes, more RGB than a gaming keyboard convention.",
+    image_url: "https://images.unsplash.com/photo-1624823183493-ed5832f48f18?w=800",
+    available: true
+  },
+  %{
+    title: "Quirky 16GB DDR4 Dual-Channel Set - Electron Approved",
+    memory_type: "DDR4",
+    capacity: 16,
+    speed: "3600 MHz",
+    brand: "Crucial",
+    price_per_day: Decimal.new("79.99"),
+    location: "Seattle, WA",
+    description:
+      "Adorable 2x8GB kit certified by the Electron Foundation for running Slack, VS Code, and Spotify simultaneously. Comes with a fascinating history - was once used to compile Chromium from source. RGB-free for the minimalists. Perfect for developers who somehow need 16GB just to write JavaScript.",
+    image_url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
+    available: true
+  },
+  %{
+    title: "Entire 128GB DDR5 Estate - Server Grade Luxury",
+    memory_type: "DDR5",
+    capacity: 128,
+    speed: "5600 MHz",
+    brand: "Kingston",
+    price_per_day: Decimal.new("499.99"),
+    location: "New York, NY",
+    description:
+      "Palatial 4x32GB DDR5 setup for the discerning professional. Can run literally everything. Chrome with 100 tabs? Check. 15 Electron apps? Easy. Minecraft with ALL the mods? Done. Your company's enterprise Java application? Still has RAM to spare. ECC supported but therapy not included.",
+    image_url: "https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=800",
+    available: true
+  },
+  %{
+    title: "Compact 8GB DDR3 Studio - Work From Home Special",
+    memory_type: "DDR3",
+    capacity: 8,
+    speed: "1866 MHz",
+    brand: "G.Skill",
+    price_per_day: Decimal.new("29.99"),
+    location: "Portland, OR",
+    description:
+      "Cute little DDR3 kit perfect for working from home, as long as your work involves exactly one application at a time. Zoom OR Excel, not both. Browser tabs limited to 5. Includes free performance anxiety when Windows Update starts. Great conversation starter about 'the good old days' of computing.",
+    image_url: "https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?w=800",
+    available: true
+  },
+  %{
+    title: "Spacious 48GB DDR5 Loft - The Sweet Spot",
+    memory_type: "DDR5",
+    capacity: 48,
+    speed: "5200 MHz",
+    brand: "TeamGroup",
+    price_per_day: Decimal.new("179.99"),
+    location: "Denver, CO",
+    description:
+      "Recently renovated 2x24GB setup with excellent price-to-performance ratio. Not too much, not too little - the Goldilocks of RAM. Perfect for gaming, programming, and running all your chat apps simultaneously. Can handle your 'quick' IntelliJ startup time. Pet-friendly (supports virtual machines).",
+    image_url: "https://images.unsplash.com/photo-1478358161113-b0e11994a36b?w=800",
+    available: true
+  },
+  %{
+    title: "Ultra 96GB DDR5 Penthouse - Creator's Playground",
+    memory_type: "DDR5",
+    capacity: 96,
+    speed: "6000 MHz",
+    brand: "G.Skill",
+    price_per_day: Decimal.new("379.99"),
+    location: "San Francisco, CA",
+    description:
+      "Magnificent 2x48GB DDR5 setup with breathtaking speed. Render 8K video while gaming while hosting a Minecraft server. Your Docker containers finally have a home. Blender simulations complete before your coffee gets cold. Warning: May cause unrealistic expectations about computer performance.",
+    image_url: "https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=800",
+    available: true
+  },
+  %{
+    title: "Modest 2GB DDR2 Cabin - Retro Computing Experience",
+    memory_type: "DDR2",
+    capacity: 2,
+    speed: "800 MHz",
+    brand: "Samsung",
+    price_per_day: Decimal.new("9.99"),
+    location: "Cleveland, OH",
+    description:
+      "Vintage DDR2 stick for the true enthusiast. Perfect for that Windows 7 nostalgia trip or running DOS games. Can barely handle modern web browsers, but makes a great story. Low heat output (because it's barely doing anything). No smart home features, no IoT, just pure, simple memory from a simpler time.",
+    image_url: "https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=800",
+    available: false
+  }
+]
 
-Repo.insert!(%Listing{
-  title: "Premium 64GB DDR5 Suite - Content Creator's Dream",
-  memory_type: "DDR5",
-  capacity: 64,
-  speed: "6400 MHz",
-  brand: "Corsair",
-  price_per_day: Decimal.new("249.99"),
-  location: "Los Angeles, CA",
-  description: "Stunning DDR5 kit with unobstructed bandwidth views. Perfect for rendering those 4K videos or running 50 Docker containers you forgot about. Can handle Adobe Creative Cloud without crying. Features include: low-profile heatsink, works great with air cooling, and yes, more RGB than a gaming keyboard convention.",
-  image_url: "https://images.unsplash.com/photo-1624823183493-ed5832f48f18?w=800",
-  available: true
-})
+Enum.each(listings, insert_listing)
 
-Repo.insert!(%Listing{
-  title: "Quirky 16GB DDR4 Dual-Channel Set - Electron Approved",
-  memory_type: "DDR4",
-  capacity: 16,
-  speed: "3600 MHz",
-  brand: "Crucial",
-  price_per_day: Decimal.new("79.99"),
-  location: "Seattle, WA",
-  description: "Adorable 2x8GB kit certified by the Electron Foundation for running Slack, VS Code, and Spotify simultaneously. Comes with a fascinating history - was once used to compile Chromium from source. RGB-free for the minimalists. Perfect for developers who somehow need 16GB just to write JavaScript.",
-  image_url: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
-  available: true
-})
-
-Repo.insert!(%Listing{
-  title: "Entire 128GB DDR5 Estate - Server Grade Luxury",
-  memory_type: "DDR5",
-  capacity: 128,
-  speed: "5600 MHz",
-  brand: "Kingston",
-  price_per_day: Decimal.new("499.99"),
-  location: "New York, NY",
-  description: "Palatial 4x32GB DDR5 setup for the discerning professional. Can run literally everything. Chrome with 100 tabs? Check. 15 Electron apps? Easy. Minecraft with ALL the mods? Done. Your company's enterprise Java application? Still has RAM to spare. ECC supported but therapy not included.",
-  image_url: "https://images.unsplash.com/photo-1487014679447-9f8336841d58?w=800",
-  available: true
-})
-
-Repo.insert!(%Listing{
-  title: "Compact 8GB DDR3 Studio - Work From Home Special",
-  memory_type: "DDR3",
-  capacity: 8,
-  speed: "1866 MHz",
-  brand: "G.Skill",
-  price_per_day: Decimal.new("29.99"),
-  location: "Portland, OR",
-  description: "Cute little DDR3 kit perfect for working from home, as long as your work involves exactly one application at a time. Zoom OR Excel, not both. Browser tabs limited to 5. Includes free performance anxiety when Windows Update starts. Great conversation starter about 'the good old days' of computing.",
-  image_url: "https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?w=800",
-  available: true
-})
-
-Repo.insert!(%Listing{
-  title: "Spacious 48GB DDR5 Loft - The Sweet Spot",
-  memory_type: "DDR5",
-  capacity: 48,
-  speed: "5200 MHz",
-  brand: "TeamGroup",
-  price_per_day: Decimal.new("179.99"),
-  location: "Denver, CO",
-  description: "Recently renovated 2x24GB setup with excellent price-to-performance ratio. Not too much, not too little - the Goldilocks of RAM. Perfect for gaming, programming, and running all your chat apps simultaneously. Can handle your 'quick' IntelliJ startup time. Pet-friendly (supports virtual machines).",
-  image_url: "https://images.unsplash.com/photo-1478358161113-b0e11994a36b?w=800",
-  available: true
-})
-
-Repo.insert!(%Listing{
-  title: "Ultra 96GB DDR5 Penthouse - Creator's Playground",
-  memory_type: "DDR5",
-  capacity: 96,
-  speed: "6000 MHz",
-  brand: "G.Skill",
-  price_per_day: Decimal.new("379.99"),
-  location: "San Francisco, CA",
-  description: "Magnificent 2x48GB DDR5 setup with breathtaking speed. Render 8K video while gaming while hosting a Minecraft server. Your Docker containers finally have a home. Blender simulations complete before your coffee gets cold. Warning: May cause unrealistic expectations about computer performance.",
-  image_url: "https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=800",
-  available: true
-})
-
-Repo.insert!(%Listing{
-  title: "Modest 2GB DDR2 Cabin - Retro Computing Experience",
-  memory_type: "DDR2",
-  capacity: 2,
-  speed: "800 MHz",
-  brand: "Samsung",
-  price_per_day: Decimal.new("9.99"),
-  location: "Cleveland, OH",
-  description: "Vintage DDR2 stick for the true enthusiast. Perfect for that Windows 7 nostalgia trip or running DOS games. Can barely handle modern web browsers, but makes a great story. Low heat output (because it's barely doing anything). No smart home features, no IoT, just pure, simple memory from a simpler time.",
-  image_url: "https://images.unsplash.com/photo-1555617981-dac3880eac6e?w=800",
-  available: false
-})
-
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Exclusive 256GB DDR5 Mansion - Data Center Vibes",
   memory_type: "DDR5",
   capacity: 256,
@@ -171,7 +183,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Charming 12GB DDR4 Cottage - The Odd One Out",
   memory_type: "DDR4",
   capacity: 12,
@@ -184,7 +196,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Deluxe 192GB DDR5 Villa - Render Farm Ready",
   memory_type: "DDR5",
   capacity: 192,
@@ -197,7 +209,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Minimalist 6GB DDR3 Shack - Bare Essentials",
   memory_type: "DDR3",
   capacity: 6,
@@ -210,7 +222,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Professional 80GB DDR4 Office - Workstation Dreams",
   memory_type: "DDR4",
   capacity: 80,
@@ -223,7 +235,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Trendy 24GB DDR5 Apartment - Just Right For Most",
   memory_type: "DDR5",
   capacity: 24,
@@ -236,7 +248,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Extreme 512GB DDR5 Compound - Because Why Not",
   memory_type: "DDR5",
   capacity: 512,
@@ -249,7 +261,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Experimental 40GB DDR4 Lab - Mixed and Matched",
   memory_type: "DDR4",
   capacity: 40,
@@ -262,7 +274,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Classic 1GB DDR Museum Piece - History Lesson",
   memory_type: "DDR",
   capacity: 1,
@@ -276,7 +288,7 @@ Repo.insert!(%Listing{
 })
 
 # New listings
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Sleek 20GB DDR4 Hybrid - The Unconventional Choice",
   memory_type: "DDR4",
   capacity: 20,
@@ -289,7 +301,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Pristine 32GB DDR4 Paradise - Balanced Excellence",
   memory_type: "DDR4",
   capacity: 32,
@@ -302,7 +314,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Magnificent 384GB DDR5 Palace - Enterprise Elite",
   memory_type: "DDR5",
   capacity: 384,
@@ -315,7 +327,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Retro 3GB DDR2 Hideaway - Nostalgia Special",
   memory_type: "DDR2",
   capacity: 3,
@@ -328,7 +340,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Stunning 72GB DDR4 Sanctuary - Professional Power",
   memory_type: "DDR4",
   capacity: 72,
@@ -341,7 +353,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Legendary 1TB DDR5 Fortress - The Final Boss",
   memory_type: "DDR5",
   capacity: 1024,
@@ -354,7 +366,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Scenic 24GB LPDDR5 Capsule - Remote Work Ready",
   memory_type: "LPDDR5",
   capacity: 24,
@@ -367,7 +379,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Industrial 80GB DDR5 Studio - Post Production Hub",
   memory_type: "DDR5",
   capacity: 80,
@@ -380,7 +392,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Vintage 12GB DDR3 Capsule - Maker's Nook",
   memory_type: "DDR3",
   capacity: 12,
@@ -393,7 +405,7 @@ Repo.insert!(%Listing{
   available: false
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Overclocked 48GB DDR5 Lounge - Benchmark Bay",
   memory_type: "DDR5",
   capacity: 48,
@@ -406,7 +418,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Quiet 64GB DDR4 Library - Focused Flex Space",
   memory_type: "DDR4",
   capacity: 64,
@@ -419,7 +431,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Eco 48GB DDR4 Camper - Solar Powered Bandwidth",
   memory_type: "DDR4",
   capacity: 48,
@@ -432,7 +444,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Nomadic 64GB LPDDR5X Pod - Remote Studio",
   memory_type: "LPDDR5X",
   capacity: 64,
@@ -445,7 +457,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Titan 768GB DDR5 Bunker - AI Playground",
   memory_type: "DDR5",
   capacity: 768,
@@ -458,7 +470,7 @@ Repo.insert!(%Listing{
   available: true
 })
 
-Repo.insert!(%Listing{
+insert_listing.(%Listing{
   title: "Cozy 16GB DDR4 Tiny House - Study Buddy",
   memory_type: "DDR4",
   capacity: 16,
