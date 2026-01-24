@@ -23,6 +23,12 @@ defmodule Rambnb.MixProject do
     ]
   end
 
+  def cli do
+    [
+      preferred_envs: [precommit: :test]
+    ]
+  end
+
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
@@ -79,7 +85,8 @@ defmodule Rambnb.MixProject do
         "tailwind rambnb --minify",
         "esbuild rambnb --minify",
         "phx.digest"
-      ]
+      ],
+      precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]
     ]
   end
 end

@@ -3,14 +3,47 @@ defmodule RambnbWeb.ListingControllerTest do
 
   import Rambnb.CatalogFixtures
 
-  @create_attrs %{available: true, brand: "some brand", capacity: 42, description: "some description", image_url: "some image_url", location: "some location", memory_type: "some memory_type", price_per_day: "120.5", speed: "some speed", title: "some title"}
-  @update_attrs %{available: false, brand: "some updated brand", capacity: 43, description: "some updated description", image_url: "some updated image_url", location: "some updated location", memory_type: "some updated memory_type", price_per_day: "456.7", speed: "some updated speed", title: "some updated title"}
-  @invalid_attrs %{available: nil, brand: nil, capacity: nil, description: nil, image_url: nil, location: nil, memory_type: nil, price_per_day: nil, speed: nil, title: nil}
+  @create_attrs %{
+    available: true,
+    brand: "some brand",
+    capacity: 42,
+    description: "some description",
+    image_url: "some image_url",
+    location: "some location",
+    memory_type: "some memory_type",
+    price_per_day: "120.5",
+    speed: "some speed",
+    title: "some title"
+  }
+  @update_attrs %{
+    available: false,
+    brand: "some updated brand",
+    capacity: 43,
+    description: "some updated description",
+    image_url: "some updated image_url",
+    location: "some updated location",
+    memory_type: "some updated memory_type",
+    price_per_day: "456.7",
+    speed: "some updated speed",
+    title: "some updated title"
+  }
+  @invalid_attrs %{
+    available: nil,
+    brand: nil,
+    capacity: nil,
+    description: nil,
+    image_url: nil,
+    location: nil,
+    memory_type: nil,
+    price_per_day: nil,
+    speed: nil,
+    title: nil
+  }
 
   describe "index" do
     test "lists all listings", %{conn: conn} do
       conn = get(conn, ~p"/listings")
-      assert html_response(conn, 200) =~ "Listing Listings"
+      assert html_response(conn, 200) =~ "RamBnB"
     end
   end
 
@@ -29,7 +62,7 @@ defmodule RambnbWeb.ListingControllerTest do
       assert redirected_to(conn) == ~p"/listings/#{id}"
 
       conn = get(conn, ~p"/listings/#{id}")
-      assert html_response(conn, 200) =~ "Listing #{id}"
+      assert html_response(conn, 200) =~ "some title"
     end
 
     test "renders errors when data is invalid", %{conn: conn} do

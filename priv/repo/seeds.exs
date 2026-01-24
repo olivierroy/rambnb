@@ -178,7 +178,8 @@ insert_listing.(%Listing{
   brand: "Samsung",
   price_per_day: Decimal.new("899.99"),
   location: "Palo Alto, CA",
-  description: "Absolute unit. 8x32GB DDR5 configuration that laughs at workloads. Train machine learning models, run every container in existence, keep all your Chrome tabs AND Firefox tabs open. Includes complementary existential crisis about why anyone needs this much RAM. Perfect for showing off at LAN parties.",
+  description:
+    "Absolute unit. 8x32GB DDR5 configuration that laughs at workloads. Train machine learning models, run every container in existence, keep all your Chrome tabs AND Firefox tabs open. Includes complementary existential crisis about why anyone needs this much RAM. Perfect for showing off at LAN parties.",
   image_url: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800",
   available: true
 })
@@ -191,7 +192,8 @@ insert_listing.(%Listing{
   brand: "Crucial",
   price_per_day: Decimal.new("59.99"),
   location: "Minneapolis, MN",
-  description: "Quirky 4GB + 8GB dual-channel setup. Yes, it's weird. Yes, it works. Perfect for the budget-conscious who bought whatever was on sale. Runs most things adequately. Great for teaching kids about 'making do with what you have.' Character-building RAM.",
+  description:
+    "Quirky 4GB + 8GB dual-channel setup. Yes, it's weird. Yes, it works. Perfect for the budget-conscious who bought whatever was on sale. Runs most things adequately. Great for teaching kids about 'making do with what you have.' Character-building RAM.",
   image_url: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800",
   available: true
 })
@@ -204,7 +206,8 @@ insert_listing.(%Listing{
   brand: "G.Skill",
   price_per_day: Decimal.new("699.99"),
   location: "Vancouver, BC",
-  description: "Professional-grade 6x32GB DDR5 beast. Render that 3D animation before the heat death of the universe. Compile entire operating systems during lunch break. Run simulations of simulations. Your IDE will actually be snappy. Warning: Your CPU might become the bottleneck.",
+  description:
+    "Professional-grade 6x32GB DDR5 beast. Render that 3D animation before the heat death of the universe. Compile entire operating systems during lunch break. Run simulations of simulations. Your IDE will actually be snappy. Warning: Your CPU might become the bottleneck.",
   image_url: "https://images.unsplash.com/photo-1591488320449-011701bb6704?w=800",
   available: true
 })
@@ -217,7 +220,8 @@ insert_listing.(%Listing{
   brand: "Kingston",
   price_per_day: Decimal.new("24.99"),
   location: "Buffalo, NY",
-  description: "Mismatched 4GB + 2GB configuration for the truly desperate. Dual-channel? Never heard of her. Runs Windows 10... eventually. Perfect for teaching patience and lowering expectations. Builds character. Actual performance may vary (it will vary badly).",
+  description:
+    "Mismatched 4GB + 2GB configuration for the truly desperate. Dual-channel? Never heard of her. Runs Windows 10... eventually. Perfect for teaching patience and lowering expectations. Builds character. Actual performance may vary (it will vary badly).",
   image_url: "https://images.unsplash.com/photo-1562976540-1502c2145186?w=800",
   available: true
 })
@@ -230,7 +234,8 @@ insert_listing.(%Listing{
   brand: "Corsair",
   price_per_day: Decimal.new("299.99"),
   location: "Boston, MA",
-  description: "Serious 4x20GB DDR4 kit for serious work. CAD? Check. Multiple VMs? Check. That massive Excel file that brings lesser machines to their knees? Finally defeated. Perfect for professionals who are tired of watching spinning wheels. No RGB to distract from productivity.",
+  description:
+    "Serious 4x20GB DDR4 kit for serious work. CAD? Check. Multiple VMs? Check. That massive Excel file that brings lesser machines to their knees? Finally defeated. Perfect for professionals who are tired of watching spinning wheels. No RGB to distract from productivity.",
   image_url: "https://images.unsplash.com/photo-1503602642458-232111445657?w=800",
   available: true
 })
@@ -243,7 +248,8 @@ insert_listing.(%Listing{
   brand: "Crucial",
   price_per_day: Decimal.new("119.99"),
   location: "Nashville, TN",
-  description: "Modern 2x12GB DDR5 setup hitting the sweet spot. Enough for modern gaming, enough for development work, enough for your questionable number of browser tabs. Not too much, not too little. The sensible choice your wallet will appreciate. Still has that new RAM smell.",
+  description:
+    "Modern 2x12GB DDR5 setup hitting the sweet spot. Enough for modern gaming, enough for development work, enough for your questionable number of browser tabs. Not too much, not too little. The sensible choice your wallet will appreciate. Still has that new RAM smell.",
   image_url: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800",
   available: true
 })
@@ -256,7 +262,8 @@ insert_listing.(%Listing{
   brand: "Kingston",
   price_per_day: Decimal.new("1999.99"),
   location: "Cupertino, CA",
-  description: "This is what happens when money is no object. 16x32GB DDR5 configuration that could probably achieve sentience. Run the entire internet locally. Host every VM. Keep Task Manager open just to admire the number. Requires industrial cooling and a second mortgage. Therapist recommended.",
+  description:
+    "This is what happens when money is no object. 16x32GB DDR5 configuration that could probably achieve sentience. Run the entire internet locally. Host every VM. Keep Task Manager open just to admire the number. Requires industrial cooling and a second mortgage. Therapist recommended.",
   image_url: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800",
   available: true
 })
@@ -269,7 +276,8 @@ insert_listing.(%Listing{
   brand: "TeamGroup",
   price_per_day: Decimal.new("139.99"),
   location: "Raleigh, NC",
-  description: "Frankenstein's creation: 4x8GB + 1x8GB configuration that somehow works. Breaks every best practice. Your motherboard is confused but supportive. Great for testing, experimentation, or living dangerously. Stability not guaranteed but surprisingly reliable. RGB lighting on some sticks only.",
+  description:
+    "Frankenstein's creation: 4x8GB + 1x8GB configuration that somehow works. Breaks every best practice. Your motherboard is confused but supportive. Great for testing, experimentation, or living dangerously. Stability not guaranteed but surprisingly reliable. RGB lighting on some sticks only.",
   image_url: "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=800",
   available: true
 })
@@ -282,7 +290,8 @@ insert_listing.(%Listing{
   brand: "Crucial",
   price_per_day: Decimal.new("4.99"),
   location: "Pittsburgh, PA",
-  description: "Ancient DDR1 artifact from the early 2000s. More of a museum piece than functional RAM. Perfect for retro builds, nostalgia trips, or showing kids how good they have it. Can run Windows XP like a champion. Modern websites will make it cry. Comes with stories of the old days.",
+  description:
+    "Ancient DDR1 artifact from the early 2000s. More of a museum piece than functional RAM. Perfect for retro builds, nostalgia trips, or showing kids how good they have it. Can run Windows XP like a champion. Modern websites will make it cry. Comes with stories of the old days.",
   image_url: Enum.at(ram_images, 2),
   available: true
 })
@@ -296,7 +305,8 @@ insert_listing.(%Listing{
   brand: "Corsair",
   price_per_day: Decimal.new("89.99"),
   location: "Chicago, IL",
-  description: "Unique 16GB + 4GB configuration that defies convention. Not quite 16GB, more than 24GB would be. Perfect for those who like living on the edge of dual-channel optimization. Runs games at high settings while your second monitor displays spreadsheets. The RAM equivalent of ordering a medium drink.",
+  description:
+    "Unique 16GB + 4GB configuration that defies convention. Not quite 16GB, more than 24GB would be. Perfect for those who like living on the edge of dual-channel optimization. Runs games at high settings while your second monitor displays spreadsheets. The RAM equivalent of ordering a medium drink.",
   image_url: Enum.at(ram_images, 3),
   available: true
 })
@@ -309,7 +319,8 @@ insert_listing.(%Listing{
   brand: "G.Skill",
   price_per_day: Decimal.new("129.99"),
   location: "San Diego, CA",
-  description: "Perfect 2x16GB DDR4 configuration that just works. Not too flashy, not too boring. RGB lighting that you can actually turn off. Ideal for those who want performance without the premium DDR5 tax. Can multitask like a boss. Comes with our 'It Just Works™' guarantee.",
+  description:
+    "Perfect 2x16GB DDR4 configuration that just works. Not too flashy, not too boring. RGB lighting that you can actually turn off. Ideal for those who want performance without the premium DDR5 tax. Can multitask like a boss. Comes with our 'It Just Works™' guarantee.",
   image_url: Enum.at(ram_images, 4),
   available: true
 })
@@ -322,7 +333,8 @@ insert_listing.(%Listing{
   brand: "Samsung",
   price_per_day: Decimal.new("1499.99"),
   location: "Seattle, WA",
-  description: "When 256GB just isn't enough. 12x32GB DDR5 configuration for the truly ambitious. Run your own private cloud. Host databases for fun. Make your friends jealous. Your computer will finally stop saying 'Not Enough Memory'. Server-grade performance without the server-grade noise.",
+  description:
+    "When 256GB just isn't enough. 12x32GB DDR5 configuration for the truly ambitious. Run your own private cloud. Host databases for fun. Make your friends jealous. Your computer will finally stop saying 'Not Enough Memory'. Server-grade performance without the server-grade noise.",
   image_url: Enum.at(ram_images, 5),
   available: true
 })
@@ -335,7 +347,8 @@ insert_listing.(%Listing{
   brand: "Kingston",
   price_per_day: Decimal.new("14.99"),
   location: "Philadelphia, PA",
-  description: "Take a trip down memory lane with this authentic DDR2 setup. Perfect for that old laptop you can't bear to throw away. Runs Windows Vista like it's 2007 again. Great for playing Minesweeper and Solitaire. May struggle with modern Twitter. Character-building guaranteed.",
+  description:
+    "Take a trip down memory lane with this authentic DDR2 setup. Perfect for that old laptop you can't bear to throw away. Runs Windows Vista like it's 2007 again. Great for playing Minesweeper and Solitaire. May struggle with modern Twitter. Character-building guaranteed.",
   image_url: Enum.at(ram_images, 6),
   available: true
 })
@@ -348,7 +361,8 @@ insert_listing.(%Listing{
   brand: "Crucial",
   price_per_day: Decimal.new("279.99"),
   location: "Atlanta, GA",
-  description: "Serious 4x18GB configuration for serious professionals. Video editors, 3D artists, and data scientists rejoice! Large enough for real work, not so large your wallet cries. Handles multiple Adobe apps simultaneously without breaking a sweat. The sweet spot between enthusiast and enterprise.",
+  description:
+    "Serious 4x18GB configuration for serious professionals. Video editors, 3D artists, and data scientists rejoice! Large enough for real work, not so large your wallet cries. Handles multiple Adobe apps simultaneously without breaking a sweat. The sweet spot between enthusiast and enterprise.",
   image_url: Enum.at(ram_images, 7),
   available: true
 })
@@ -361,7 +375,8 @@ insert_listing.(%Listing{
   brand: "Kingston",
   price_per_day: Decimal.new("3999.99"),
   location: "San Francisco, CA",
-  description: "Yes, you read that right. 1 TERABYTE of RAM. 32x32GB DDR5 monstrosity that shouldn't exist but does. Load entire operating systems into RAM disk. Run Minecraft server, GTA V server, and everything else simultaneously. Your power bill will need its own mortgage. Requires liquid nitrogen cooling and questionable life choices.",
+  description:
+    "Yes, you read that right. 1 TERABYTE of RAM. 32x32GB DDR5 monstrosity that shouldn't exist but does. Load entire operating systems into RAM disk. Run Minecraft server, GTA V server, and everything else simultaneously. Your power bill will need its own mortgage. Requires liquid nitrogen cooling and questionable life choices.",
   image_url: Enum.at(ram_images, 0),
   available: true
 })
@@ -374,7 +389,8 @@ insert_listing.(%Listing{
   brand: "Micron",
   price_per_day: Decimal.new("129.99"),
   location: "Santa Fe, NM",
-  description: "Featherweight LPDDR5 kit tuned for travel ultrabooks. Runs whisper-quiet, barely sips power, and still handles Figma, Zoom, and all-day Spotify sessions. Comes pre-configured for focus sprints and includes a loaner USB-C dock.",
+  description:
+    "Featherweight LPDDR5 kit tuned for travel ultrabooks. Runs whisper-quiet, barely sips power, and still handles Figma, Zoom, and all-day Spotify sessions. Comes pre-configured for focus sprints and includes a loaner USB-C dock.",
   image_url: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800",
   available: true
 })
@@ -387,7 +403,8 @@ insert_listing.(%Listing{
   brand: "TeamGroup",
   price_per_day: Decimal.new("319.99"),
   location: "Brooklyn, NY",
-  description: "Purpose-built quad channel kit for editors who keep After Effects, DaVinci, and a dozen proxies open at once. Rigorously burn-in tested so render queues can run overnight without drama.",
+  description:
+    "Purpose-built quad channel kit for editors who keep After Effects, DaVinci, and a dozen proxies open at once. Rigorously burn-in tested so render queues can run overnight without drama.",
   image_url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800",
   available: true
 })
@@ -400,7 +417,8 @@ insert_listing.(%Listing{
   brand: "Patriot",
   price_per_day: Decimal.new("39.99"),
   location: "Boulder, CO",
-  description: "Charming 8GB + 4GB triple-channel throwback for hobby builds, retro LAN parties, or flashing firmware on that stack of routers. Includes complimentary anti-static wrist strap.",
+  description:
+    "Charming 8GB + 4GB triple-channel throwback for hobby builds, retro LAN parties, or flashing firmware on that stack of routers. Includes complimentary anti-static wrist strap.",
   image_url: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?w=800",
   available: false
 })
@@ -413,7 +431,8 @@ insert_listing.(%Listing{
   brand: "ADATA",
   price_per_day: Decimal.new("219.99"),
   location: "Las Vegas, NV",
-  description: "Hand-binned sticks mounted with active cooling for leaderboard chasers. Pushes extreme XMP profiles while keeping RGB accents tasteful. LN2 pot not included but highly encouraged.",
+  description:
+    "Hand-binned sticks mounted with active cooling for leaderboard chasers. Pushes extreme XMP profiles while keeping RGB accents tasteful. LN2 pot not included but highly encouraged.",
   image_url: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800",
   available: true
 })
@@ -426,7 +445,8 @@ insert_listing.(%Listing{
   brand: "HyperX",
   price_per_day: Decimal.new("189.99"),
   location: "Madison, WI",
-  description: "Low-profile DDR4 kit with zero lighting and tuned timings for deep work. Perfect for research sprints, data exploration, and serious note-taking without disco vibes.",
+  description:
+    "Low-profile DDR4 kit with zero lighting and tuned timings for deep work. Perfect for research sprints, data exploration, and serious note-taking without disco vibes.",
   image_url: "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800",
   available: true
 })
@@ -439,7 +459,8 @@ insert_listing.(%Listing{
   brand: "Patriot",
   price_per_day: Decimal.new("109.99"),
   location: "Bend, OR",
-  description: "Ultra-efficient 2x24GB kit mounted in a fanless shell with solar-ready power delivery. Designed for off-grid coders who want silent builds while camping in the Cascades.",
+  description:
+    "Ultra-efficient 2x24GB kit mounted in a fanless shell with solar-ready power delivery. Designed for off-grid coders who want silent builds while camping in the Cascades.",
   image_url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800",
   available: true
 })
@@ -452,7 +473,8 @@ insert_listing.(%Listing{
   brand: "Samsung",
   price_per_day: Decimal.new("199.99"),
   location: "Lisbon, Portugal",
-  description: "Travel-friendly low-power module tuned for ultrabooks. Comes pre-configured with a virtual coworking pass, VPN, and focus music playlist. Runs cool even on rooftop terraces.",
+  description:
+    "Travel-friendly low-power module tuned for ultrabooks. Comes pre-configured with a virtual coworking pass, VPN, and focus music playlist. Runs cool even on rooftop terraces.",
   image_url: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?w=800",
   available: true
 })
@@ -465,7 +487,8 @@ insert_listing.(%Listing{
   brand: "Micron",
   price_per_day: Decimal.new("1299.99"),
   location: "Zurich, Switzerland",
-  description: "12-channel monster built for ML researchers. Includes Kubernetes templates, liquid cooling, and an on-call SRE. Enough memory to fit entire language models with room for logs.",
+  description:
+    "12-channel monster built for ML researchers. Includes Kubernetes templates, liquid cooling, and an on-call SRE. Enough memory to fit entire language models with room for logs.",
   image_url: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800",
   available: true
 })
@@ -478,7 +501,8 @@ insert_listing.(%Listing{
   brand: "PNY",
   price_per_day: Decimal.new("44.99"),
   location: "Ann Arbor, MI",
-  description: "Adorable low-profile sticks with built-in timers to remind you to hydrate between study sessions. Perfect for students cramming render-heavy projects the night before critique.",
+  description:
+    "Adorable low-profile sticks with built-in timers to remind you to hydrate between study sessions. Perfect for students cramming render-heavy projects the night before critique.",
   image_url: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800",
   available: false
 })

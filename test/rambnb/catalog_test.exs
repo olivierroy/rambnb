@@ -8,7 +8,18 @@ defmodule Rambnb.CatalogTest do
 
     import Rambnb.CatalogFixtures
 
-    @invalid_attrs %{available: nil, brand: nil, capacity: nil, description: nil, image_url: nil, location: nil, memory_type: nil, price_per_day: nil, speed: nil, title: nil}
+    @invalid_attrs %{
+      available: nil,
+      brand: nil,
+      capacity: nil,
+      description: nil,
+      image_url: nil,
+      location: nil,
+      memory_type: nil,
+      price_per_day: nil,
+      speed: nil,
+      title: nil
+    }
 
     test "list_listings/0 returns all listings" do
       listing = listing_fixture()
@@ -21,7 +32,18 @@ defmodule Rambnb.CatalogTest do
     end
 
     test "create_listing/1 with valid data creates a listing" do
-      valid_attrs = %{available: true, brand: "some brand", capacity: 42, description: "some description", image_url: "some image_url", location: "some location", memory_type: "some memory_type", price_per_day: "120.5", speed: "some speed", title: "some title"}
+      valid_attrs = %{
+        available: true,
+        brand: "some brand",
+        capacity: 42,
+        description: "some description",
+        image_url: "some image_url",
+        location: "some location",
+        memory_type: "some memory_type",
+        price_per_day: "120.5",
+        speed: "some speed",
+        title: "some title"
+      }
 
       assert {:ok, %Listing{} = listing} = Catalog.create_listing(valid_attrs)
       assert listing.available == true
@@ -42,7 +64,19 @@ defmodule Rambnb.CatalogTest do
 
     test "update_listing/2 with valid data updates the listing" do
       listing = listing_fixture()
-      update_attrs = %{available: false, brand: "some updated brand", capacity: 43, description: "some updated description", image_url: "some updated image_url", location: "some updated location", memory_type: "some updated memory_type", price_per_day: "456.7", speed: "some updated speed", title: "some updated title"}
+
+      update_attrs = %{
+        available: false,
+        brand: "some updated brand",
+        capacity: 43,
+        description: "some updated description",
+        image_url: "some updated image_url",
+        location: "some updated location",
+        memory_type: "some updated memory_type",
+        price_per_day: "456.7",
+        speed: "some updated speed",
+        title: "some updated title"
+      }
 
       assert {:ok, %Listing{} = listing} = Catalog.update_listing(listing, update_attrs)
       assert listing.available == false

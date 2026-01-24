@@ -18,24 +18,31 @@ defmodule RambnbWeb.BookingController do
   def create(conn, %{"booking" => booking_params}) do
     listing = Catalog.get_listing!(booking_params["listing_id"])
 
-    start_date = Date.from_iso8601!(booking_params["start_date"])
-    end_date = Date.from_iso8601!(booking_params["end_date"])
-    days = Date.diff(end_date, start_date)
+    with {:ok, start_date} <- Date.from_iso8601(booking_params["start_date"]),
+         {:ok, end_date} <- Date.from_iso8601(booking_params["end_date"]) do
+      days = Date.diff(end_date, start_date)
+      total_price = Decimal.mult(listing.price_per_day, Decimal.new(days))
 
-    total_price = Decimal.mult(listing.price_per_day, Decimal.new(days))
+      booking_params =
+        booking_params
+        |> Map.put("total_price", total_price)
+        |> Map.put("status", "confirmed")
 
-    booking_params =
-      booking_params
-      |> Map.put("total_price", total_price)
-      |> Map.put("status", "confirmed")
+      case Bookings.create_booking(booking_params) do
+        {:ok, booking} ->
+          conn
+          |> put_flash(:info, "RAM reserved successfully! Check your email for confirmation.")
+          |> redirect(to: ~p"/bookings/#{booking}")
 
-    case Bookings.create_booking(booking_params) do
-      {:ok, booking} ->
-        conn
-        |> put_flash(:info, "RAM reserved successfully! Check your email for confirmation.")
-        |> redirect(to: ~p"/bookings/#{booking}")
+        {:error, %Ecto.Changeset{} = changeset} ->
+          render(conn, :new, changeset: changeset)
+      end
+    else
+      _ ->
+        changeset =
+          Bookings.change_booking(%Booking{})
+          |> Ecto.Changeset.add_error(:start_date, "invalid date format")
 
-      {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, :new, changeset: changeset)
     end
   end

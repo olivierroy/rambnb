@@ -2,10 +2,32 @@ defmodule RambnbWeb.BookingControllerTest do
   use RambnbWeb.ConnCase
 
   import Rambnb.BookingsFixtures
+  import Rambnb.CatalogFixtures
 
-  @create_attrs %{end_date: ~D[2025-12-09], guest_email: "some guest_email", guest_name: "some guest_name", start_date: ~D[2025-12-09], status: "some status", total_price: "120.5", usage_type: "some usage_type"}
-  @update_attrs %{end_date: ~D[2025-12-10], guest_email: "some updated guest_email", guest_name: "some updated guest_name", start_date: ~D[2025-12-10], status: "some updated status", total_price: "456.7", usage_type: "some updated usage_type"}
-  @invalid_attrs %{end_date: nil, guest_email: nil, guest_name: nil, start_date: nil, status: nil, total_price: nil, usage_type: nil}
+  setup do
+    listing = listing_fixture()
+    %{listing: listing}
+  end
+
+  @update_attrs %{
+    end_date: ~D[2025-12-10],
+    guest_email: "some updated guest_email",
+    guest_name: "some updated guest_name",
+    start_date: ~D[2025-12-10],
+    status: "some updated status",
+    total_price: "456.7",
+    usage_type: "some updated usage_type"
+  }
+  @invalid_attrs %{
+    end_date: nil,
+    guest_email: nil,
+    guest_name: nil,
+    start_date: nil,
+    status: nil,
+    total_price: nil,
+    usage_type: nil,
+    listing_id: nil
+  }
 
   describe "index" do
     test "lists all bookings", %{conn: conn} do
@@ -22,18 +44,40 @@ defmodule RambnbWeb.BookingControllerTest do
   end
 
   describe "create booking" do
-    test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, ~p"/bookings", booking: @create_attrs)
+    test "redirects to show when data is valid", %{conn: conn, listing: listing} do
+      create_attrs = %{
+        end_date: "2025-12-09",
+        guest_email: "some guest_email",
+        guest_name: "some guest_name",
+        start_date: "2025-12-09",
+        status: "some status",
+        total_price: "120.5",
+        usage_type: "some usage_type",
+        listing_id: listing.id
+      }
+
+      conn = post(conn, ~p"/bookings", booking: create_attrs)
 
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == ~p"/bookings/#{id}"
 
       conn = get(conn, ~p"/bookings/#{id}")
-      assert html_response(conn, 200) =~ "Booking #{id}"
+      assert html_response(conn, 200) =~ "some guest_email"
     end
 
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, ~p"/bookings", booking: @invalid_attrs)
+    test "renders errors when data is invalid", %{conn: conn, listing: listing} do
+      invalid_attrs = %{
+        end_date: "",
+        guest_email: nil,
+        guest_name: nil,
+        start_date: "",
+        status: nil,
+        total_price: nil,
+        usage_type: nil,
+        listing_id: listing.id
+      }
+
+      conn = post(conn, ~p"/bookings", booking: invalid_attrs)
       assert html_response(conn, 200) =~ "New Booking"
     end
   end

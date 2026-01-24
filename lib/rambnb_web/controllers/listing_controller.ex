@@ -7,6 +7,7 @@ defmodule RambnbWeb.ListingController do
   def index(conn, params) do
     listings = Catalog.list_listings(params)
     memory_types = ["All", "DDR", "DDR2", "DDR3", "DDR4", "DDR5"]
+
     usage_types = [
       {"All", "all"},
       {"Gaming", "gaming"},
@@ -16,6 +17,7 @@ defmodule RambnbWeb.ListingController do
       {"Chrome Tab Hoarder", "chrome_hoarder"},
       {"Just Browsing", "browsing"}
     ]
+
     render(conn, :index,
       listings: listings,
       memory_types: memory_types,

@@ -21,7 +21,16 @@ defmodule Rambnb.Bookings.Booking do
   @doc false
   def changeset(booking, attrs) do
     booking
-    |> cast(attrs, [:start_date, :end_date, :usage_type, :guest_name, :guest_email, :total_price, :status, :listing_id])
+    |> cast(attrs, [
+      :start_date,
+      :end_date,
+      :usage_type,
+      :guest_name,
+      :guest_email,
+      :total_price,
+      :status,
+      :listing_id
+    ])
     |> put_public_id()
     |> validate_required([
       :start_date,

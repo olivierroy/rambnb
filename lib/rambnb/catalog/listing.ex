@@ -20,7 +20,29 @@ defmodule Rambnb.Catalog.Listing do
   @doc false
   def changeset(listing, attrs) do
     listing
-    |> cast(attrs, [:title, :memory_type, :capacity, :speed, :brand, :price_per_day, :location, :description, :image_url, :available])
-    |> validate_required([:title, :memory_type, :capacity, :speed, :brand, :price_per_day, :location, :description, :image_url, :available])
+    |> cast(attrs, [
+      :title,
+      :memory_type,
+      :capacity,
+      :speed,
+      :brand,
+      :price_per_day,
+      :location,
+      :description,
+      :image_url,
+      :available
+    ])
+    |> validate_required([
+      :title,
+      :memory_type,
+      :capacity,
+      :speed,
+      :brand,
+      :price_per_day,
+      :location,
+      :description,
+      :image_url,
+      :available
+    ])
   end
 end

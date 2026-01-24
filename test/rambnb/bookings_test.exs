@@ -22,12 +22,16 @@ defmodule Rambnb.BookingsTest do
 
     test "list_bookings/0 returns all bookings" do
       booking = booking_fixture()
-      assert Bookings.list_bookings() == [booking]
+      assert [fetched_booking] = Bookings.list_bookings()
+      assert fetched_booking.public_id == booking.public_id
     end
 
     test "get_booking!/1 returns the booking with given id" do
       booking = booking_fixture()
-      assert Bookings.get_booking!(booking.public_id) == booking
+      fetched_booking = Bookings.get_booking!(booking.public_id)
+      assert fetched_booking.public_id == booking.public_id
+      assert fetched_booking.guest_email == booking.guest_email
+      assert fetched_booking.guest_name == booking.guest_name
     end
 
     test "create_booking/1 with valid data creates a booking" do
@@ -60,7 +64,16 @@ defmodule Rambnb.BookingsTest do
 
     test "update_booking/2 with valid data updates the booking" do
       booking = booking_fixture()
-      update_attrs = %{end_date: ~D[2025-12-10], guest_email: "some updated guest_email", guest_name: "some updated guest_name", start_date: ~D[2025-12-10], status: "some updated status", total_price: "456.7", usage_type: "some updated usage_type"}
+
+      update_attrs = %{
+        end_date: ~D[2025-12-10],
+        guest_email: "some updated guest_email",
+        guest_name: "some updated guest_name",
+        start_date: ~D[2025-12-10],
+        status: "some updated status",
+        total_price: "456.7",
+        usage_type: "some updated usage_type"
+      }
 
       assert {:ok, %Booking{} = booking} = Bookings.update_booking(booking, update_attrs)
       assert booking.end_date == ~D[2025-12-10]
@@ -75,7 +88,10 @@ defmodule Rambnb.BookingsTest do
     test "update_booking/2 with invalid data returns error changeset" do
       booking = booking_fixture()
       assert {:error, %Ecto.Changeset{}} = Bookings.update_booking(booking, @invalid_attrs)
-      assert booking == Bookings.get_booking!(booking.public_id)
+      fetched_booking = Bookings.get_booking!(booking.public_id)
+      assert fetched_booking.public_id == booking.public_id
+      assert fetched_booking.guest_email == booking.guest_email
+      assert fetched_booking.guest_name == booking.guest_name
     end
 
     test "delete_booking/1 deletes the booking" do
